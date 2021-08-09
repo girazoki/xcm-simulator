@@ -14,10 +14,24 @@ frame-support = { git = "https://github.com/paritytech/substrate", branch = "pol
 sp-io = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.8" }
 sp-std = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.8" }
 
-cumulus-primitives-core = { git = "https://github.com/paritytech/cumulus", branch = "polkadot-v0.9.8" }
-cumulus-pallet-xcmp-queue = { git = "https://github.com/paritytech/cumulus", branch = "polkadot-v0.9.8" }
-cumulus-pallet-dmp-queue = { git = "https://github.com/paritytech/cumulus", branch = "polkadot-v0.9.8" }
+cumulus-primitives-core = { git = "https://github.com/purestake/cumulus", branch = "joshy-np098" }
+cumulus-pallet-xcmp-queue = { git = "https://github.com/purestake/cumulus", default-features = false, branch = "joshy-np098" }
+cumulus-pallet-dmp-queue = { git = "https://github.com/purestake/cumulus", default-features = false,  branch = "joshy-np098"}
 
 xcm = { git = "https://github.com/paritytech/polkadot", branch = "release-v0.9.8" }
 xcm-executor = { git = "https://github.com/paritytech/polkadot", branch = "release-v0.9.8" }
 polkadot-runtime-parachains = { git = "https://github.com/paritytech/polkadot", branch = "release-v0.9.8" }
+
+[features]
+default = ["std"]
+std = [
+        "frame-support/std",
+        "codec/std",
+        "cumulus-primitives-core/std",
+        "cumulus-pallet-xcmp-queue/std",
+        "cumulus-pallet-dmp-queue/std",
+        "sp-io/std",
+        "xcm/std",
+        "xcm-executor/std",
+        "polkadot-runtime-parachains/std"
+]
